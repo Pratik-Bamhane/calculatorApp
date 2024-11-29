@@ -15,6 +15,22 @@ function App() {
     } else if (value === "C") {
       setInput("");
       setResult(0);
+    } else if (value === "%") {
+      try {
+        const percentage = eval(input) / 100;
+        setInput(percentage.toString());
+        setResult(percentage);
+      } catch {
+        setResult("Error");
+      }
+    } else if (value === "IncBy2") {
+      try {
+        const incremented = eval(input) + 2;
+        setInput(incremented.toString());
+        setResult(incremented);
+      } catch {
+        setResult("Error");
+      }
     } else {
       setInput(input + value);
     }
@@ -24,12 +40,13 @@ function App() {
     "1", "2", "3", "+",
     "4", "5", "6", "-",
     "7", "8", "9", "*",
-    "C", "0", "=", "/"
+    "C", "0", "=", "/",
+    "%", "IncBy2"
   ];
 
   return (
     <div className="App">
-      <h1>Calculator</h1>
+      <h1>Advanced Calculator</h1>
       <div className="display">
         <div>{input || "0"}</div>
         <div>Result: {result}</div>
